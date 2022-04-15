@@ -1,2 +1,3 @@
 gp: main.cpp
-	g++ main.cpp -o gp
+	g++ utilities.cc graph.cc floyd.cc dfs.cc main.cpp -o gp
+	./gp

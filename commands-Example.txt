@@ -1,0 +1,5 @@
+start-graph 2000 2002
+out-degree
+diameter
+scc
+end-graph

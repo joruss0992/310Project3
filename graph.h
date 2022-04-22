@@ -3,6 +3,7 @@
 #include <iomanip>
 #include <fstream>
 #include <sstream>
+#include <cmath>
 #include <locale>
 
 // void saveArrays(std::string edgesFile, std::string datesFile, int& vNum, std::string command
@@ -83,5 +84,6 @@ void saveVerticies(std::string datesFile, int V[], std::string command);
 void saveEdges(std::string edgesFile, Edge *edges, int V[], int vNum);
 void reverseArray(struct Edge edges[], int size);
 bool check(int V[], int vNum, int val);
+float calculateDegree(int m, int n);
 
 

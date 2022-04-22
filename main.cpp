@@ -40,37 +40,22 @@ int main(int argc,char* argv[]){
             saveVerticies(argv[2], V, currComm);
             countEdges(argv[1], currComm, eNum, V, vNum);            
 
-            
-            
             struct Edge edges[eNum];
             saveEdges(argv[1], edges, V, vNum);
-            // saveArrays(argv[1], argv[2], vNum, currComm, edges, V);
             cout << "\t|V| = " << vNum << " verticies" << endl;
             cout << "\t|E| = " << eNum << " edges" << endl;
-            // for(int i = 0; i < 50; i++){
-            //     cout << edges[i].src << endl;
-            // }
-            // cout << edges[4].src << endl;
-
+        
             reverseArray(edges, eNum);
-
-            // for(int i = 0; i < sizeof(edges); i++){
-            //     if(edges[i].src != 0){
-            //         cout << i << ": -" << edges[i].src << "- "; 
-            //     }
-            // }
-
             Graph graph(edges, eNum, vNum, V);
             
             
-            // section prints out adjacency list for testing
-            for (int i = 0; i < vNum; i++){
-            // print given vertex
-            std::cout << i;
-            // print all its neighboring vertices
-            printList(graph.head[i]);
-            }
-            // cout << graph.head[3]->code << endl; // this prints out postions next value in ad list
+            // // section prints out adjacency list for testing
+            // for (int i = 0; i < vNum; i++){
+            // // print given vertex
+            // std::cout << i;
+            // // print all its neighboring vertices
+            // printList(graph.head[i]);
+            // }
             
 
             newLine();
@@ -78,7 +63,9 @@ int main(int argc,char* argv[]){
 
         else if(currComm[1] == 'u'){ // Current Command is: out-degree
             cout << "Command: " << currComm << endl;
-
+            newLine();
+            cout << "The graph G has average out-degree " 
+            << eNum << "/" << vNum << " = " << std::fixed << std::setprecision(2) << calculateDegree(eNum, vNum) << endl;
 
             newLine();
         }

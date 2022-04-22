@@ -104,20 +104,20 @@ void saveEdges(std::string edgesFile, Edge *edges, int V[], int vNum){
         n1 = std::stoi(node1);  // Converts node1 to int and finds which index it should be represented
         n2 = std::stoi(node2);
 
-        std::cout << n1 << std::endl;
-        std::cout << n2 << std::endl;
+        // std::cout << n1 << std::endl;
+        // std::cout << n2 << std::endl;
         
         
 
         inside = check(V, vNum, n1);
-        std::cout << inside << std::endl;
+        // std::cout << inside << std::endl;
 
         if(inside == false){
             continue;
         }
 
         inside = check(V, vNum, n2);
-        std::cout << inside << std::endl;
+        // std::cout << inside << std::endl;
 
         if(inside == false){
             continue;
@@ -126,25 +126,20 @@ void saveEdges(std::string edgesFile, Edge *edges, int V[], int vNum){
         for(int i = 0; i < vNum; i++){  // Goes through array V and finds match, the position found is
             if(n1 == V[i]){              // then saved as the value
                 n1 = i;
-                std::cout << n1 << std::endl;
+                // std::cout << n1 << std::endl;
             }
         }
         
         for(int i = 0; i < vNum; i++){
             if(n2 == V[i]){              // then saved as the value
                 n2 = i;
-                std::cout << n2 << std::endl;
+                // std::cout << n2 << std::endl;
             }
         }
         
 
         edges[count] = {n1, n2};    // array of edges are then saved
         count++;
-        // int a = n1;
-        // if(a == b){
-        //     repeats++;
-        // }
-        // std::cout << repeats << std::endl;
     }
 }
 
@@ -170,13 +165,8 @@ bool check(int V[], int vNum, int val){
 }
 
 
-// // This function saves arrays V and edges to be in their proper formatting and values
-// void saveArrays(std::string edgesFile, std::string datesFile, int& vNum, std::string command
-//     , struct Edge edges[], int V[]){
-                    
-//     // std::cout << "testing1" << std::endl; // Newline function to simply aid in formatting
-//     saveVerticies(datesFile, V, command);
-//     // std::cout << "testing2" << std::endl; // Newline function to simply aid in formatting
-//     saveEdges(edgesFile, edges, V, vNum);
-//     // std::cout << "testing3" << std::endl; // Newline function to simply aid in formatting
-// }
+float calculateDegree(int m, int n){
+    float a = 1.0 * m, b = 1.0 * n;
+    float c = a/b;
+    return c;
+}

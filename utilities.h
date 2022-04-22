@@ -10,3 +10,4 @@ void newLine();
 void countLines(std::string file, int& count);
 void saveComm(std::string commands[], std::string file);
 void countVerticies(std::string datesFile, std::string command, int& count);
+void countEdges(std::string edgesFile, std::string command, int& count, int V[], int vNum);

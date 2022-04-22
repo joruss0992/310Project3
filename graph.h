@@ -5,34 +5,32 @@
 #include <sstream>
 #include <locale>
 
-void testGraph();
-void buildGraph(std::string edgesFile, int& eNum, std::string datesFile, int& vNum, std::string command);
-// void saveEdges(std::string edgesFile, Edge *edges);
+// void saveArrays(std::string edgesFile, std::string datesFile, int& vNum, std::string command
+//                 , struct Edge edges[], int V[]);
 void saveNodes();
 int *sortArray(int arr[], int size);
 
 
 
-struct Node{
+struct Node{    // Node structure declared, represents the verticies
     int code;
     int list_index;
     Node* next;
 };
 
-struct Edge{
+struct Edge{    // Edge structure declared
     int src, dest;
 };
 
 class Graph{
     // Function to allocate a new node for the adjacency list
-    Node* getAdjListNode(int dest, Node* head)
-    {
+    Node* getAdjListNode(int dest, Node* head){
+
         Node* newNode = new Node;
         newNode->code = dest;
     
         // point new node to the current head
         newNode->next = head;
-        // std::cout << newNode->code << "----" << newNode->next << std::endl;
         return newNode;
     }
 
@@ -40,8 +38,7 @@ class Graph{
 
 public:
  
-    // An array of pointers to Node to represent the
-    // adjacency list
+    // An array of pointers to Node to represent the adjacency list
     Node **head;
  
     // Constructor
@@ -52,13 +49,12 @@ public:
         this->N = N;
  
         // initialize head pointer for all vertices
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < N; i++){
             head[i] = nullptr;
         }
  
         // add edges to the directed graph
-        for (unsigned i = 0; i < n; i++)
-        {
+        for (int i = 0; i < n; i++){
             int src = edges[i].src;
             int dest = edges[i].dest;
 
@@ -68,12 +64,11 @@ public:
  
             // point head pointer to the new node
             head[src] = newNode;        
-            // std::cout << edges[i].src << "-->" << edges[i].dest << std::endl;
 
         }
     }
  
-    // Destructor
+    // Destructor will be called in end graph function
     ~Graph() {
         for (int i = 0; i < N; i++) {
             delete[] head[i];
@@ -84,3 +79,9 @@ public:
 };
 
 void printList(Node* ptr);
+void saveVerticies(std::string datesFile, int V[], std::string command);
+void saveEdges(std::string edgesFile, Edge *edges, int V[], int vNum);
+void reverseArray(struct Edge edges[], int size);
+bool check(int V[], int vNum, int val);
+
+

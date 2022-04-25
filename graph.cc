@@ -84,9 +84,7 @@ void saveEdges(std::string edgesFile, Edge *edges, int V[], int vNum){
         std::cerr << "Error openning file, file not found: file 1" << std::endl;
         exit(1);
     }
-    int count = 0;  // a node is a given verticy
-    // int repeats = 0;
-    
+    int count = 0;  // a node is a given verticy    
 
     std::string line = "";   // Line will hold the value of each line in file
     while (getline(fileStream, line)){
@@ -100,24 +98,17 @@ void saveEdges(std::string edgesFile, Edge *edges, int V[], int vNum){
         std::getline(inputString, node1, '\t'); // Saves the value of verticy in string form temporarily
         std::getline(inputString, node2);
         
-        // int b = n1;
         n1 = std::stoi(node1);  // Converts node1 to int and finds which index it should be represented
         n2 = std::stoi(node2);
-
-        // std::cout << n1 << std::endl;
-        // std::cout << n2 << std::endl;
-        
         
 
         inside = check(V, vNum, n1);
-        // std::cout << inside << std::endl;
 
         if(inside == false){
             continue;
         }
 
         inside = check(V, vNum, n2);
-        // std::cout << inside << std::endl;
 
         if(inside == false){
             continue;
@@ -126,23 +117,21 @@ void saveEdges(std::string edgesFile, Edge *edges, int V[], int vNum){
         for(int i = 0; i < vNum; i++){  // Goes through array V and finds match, the position found is
             if(n1 == V[i]){              // then saved as the value
                 n1 = i;
-                // std::cout << n1 << std::endl;
             }
         }
         
         for(int i = 0; i < vNum; i++){
             if(n2 == V[i]){              // then saved as the value
                 n2 = i;
-                // std::cout << n2 << std::endl;
             }
         }
         
-
-        edges[count] = {n1, n2};    // array of edges are then saved
+        edges[count] = {n1, n2};    // array of edges are then saved {source, destination}
         count++;
     }
 }
 
+// Reverses the order of edges array
 void reverseArray(struct Edge edges[], int size){
     struct Edge temp[size];    // temp array created to help with inversing the edges array so 
     int start = 0;              // values are in incrementing order
@@ -156,6 +145,7 @@ void reverseArray(struct Edge edges[], int size){
     }
 }
 
+// Function checks if a Value is inside of V
 bool check(int V[], int vNum, int val){
     for(int i = 0; i < vNum; i++){
         if(V[i] == val)
@@ -164,9 +154,18 @@ bool check(int V[], int vNum, int val){
     return false;
 }
 
-
+// Function takes |V| and |E| and calculates the average degree!
 float calculateDegree(int m, int n){
     float a = 1.0 * m, b = 1.0 * n;
     float c = a/b;
-    return c;
+    return floor(c * 100.0) / 100.0;    // rounded to the floor of two decimals
+}
+
+// Function helps look through adjacecny list and counts how many edges a vertex has
+void degreeDist(Node* ptr, int& count){
+    count = 0;  // count is reset for every check
+    while (ptr != nullptr){     // If the pointer isn't null, it has edges
+        count++;                // and for every edge, count is incremented
+        ptr = ptr->next;    // moves to next edge in list
+    }
 }

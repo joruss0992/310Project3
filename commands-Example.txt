@@ -1,4 +1,4 @@
-start-graph 2000 2002
+start-graph 2000 2000
 out-degree
 diameter
 scc
